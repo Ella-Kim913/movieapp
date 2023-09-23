@@ -66,7 +66,7 @@ class homescreen extends StatelessWidget {
                         child: Column(
                           children: [
                             SizedBox(
-                              height: 300,
+                              height: 260,
                               child: listmake(snapshot),
                             ),
                           ],

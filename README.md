@@ -8,9 +8,21 @@ MovieApp is an individual project developed over the course of a month and was r
 - Shows detailed information for each movie
 
 ## Technologies Used
-- Dart
-- Flutter
-- MovieDB API
+- Dart: The primary programming language used.
+- Flutter: The UI toolkit for crafting natively compiled applications.
+- MovieDB API: For real-time movie data.
+
+## Flutter Features
+- Widgets: Employed for building a modular and interactive UI.
+- Life Cycles: Managed widget life cycles for optimal performance.
+- State Management: Utilized Flutter's state management to maintain app state.
+- Data Fetching: Integrated MovieDB API for live data retrieval.
+- Navigation: Implemented seamless navigation throughout the app.
+- UI Design: Crafted a user-friendly and responsive design interface.
+- Local Storage: Used for persisting user preferences and session data.
+- Futures: Leveraged for handling asynchronous tasks.
+- Shortcuts & Extensions: Applied to streamline code efficiency and readability.
+
 
 ## Acknowledgements
 Nominated as a best-case project in [Nomad Online Flutter Boot Camp].

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/APIModel/moviedetail.dart';
-import 'package:movieapp/APIModel/moviegenres.dart';
 import 'package:movieapp/APIService/api_service.dart';
 
 class detailscreen extends StatefulWidget {
@@ -20,12 +19,10 @@ class detailscreen extends StatefulWidget {
 
 class _detailscreenState extends State<detailscreen> {
   late Future<movieDetails> movie;
-  late Future<moviegenres> moviegenre;
 
   @override
   void initState() {
     movie = APIService.getMovieDetailsByid(widget.id.toString());
-    //moviegenre = APIService.getMoviegenresByid(widget.id.toString());
     super.initState();
   }
 
@@ -53,19 +50,11 @@ class _detailscreenState extends State<detailscreen> {
                           "https://image.tmdb.org/t/p/w500/${widget.poster}"),
                       fit: BoxFit.cover),
                 ),
-                // child: Image.network(
-                //   "https://image.tmdb.org/t/p/w500/${widget.poster}",
-                // ),
                 child: Column(children: [
                   FutureBuilder(
                     future: movie,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        // List genreList = [];
-
-                        // for (var genre in snapshot.data!.genres.toList()) {
-                        //   genreList.add(genre['name']);
-                        // }
                         return Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 30,
@@ -84,7 +73,7 @@ class _detailscreenState extends State<detailscreen> {
                               Row(
                                 children: [
                                   Text(
-                                    snapshot.data!.rating.toString(),
+                                    snapshot.data!.rating.round().toString(),
                                     style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400,
@@ -116,7 +105,7 @@ class _detailscreenState extends State<detailscreen> {
                                 height: 50,
                               ),
                               const Text(
-                                "Stroyline",
+                                "Storyline",
                                 style: TextStyle(
                                     fontSize: 45,
                                     fontWeight: FontWeight.w700,
@@ -139,20 +128,6 @@ class _detailscreenState extends State<detailscreen> {
                   ),
                 ]),
               ),
-
-              // FutureBuilder(
-              //   future: moviegenre,
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasData) {
-              //       return Column(
-              //         children: [
-              //           Text(snapshot.data!.genres['name'].toString()),
-              //         ],
-              //       );
-              //     }
-              //     return const Text("----");
-              //   },
-              // )
             ],
           ),
         ),

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:movieapp/APIModel/moviedetail.dart';
-import 'package:movieapp/APIModel/moviegenres.dart';
 import 'package:movieapp/APIModel/movielist.dart';
 
 class APIService {
@@ -75,25 +74,6 @@ class APIService {
       final movie = jsonDecode(response.body);
 
       return movieDetails.fromJson(movie);
-    }
-    throw Error();
-  }
-
-  static Future<List<moviegenres>> getMoviegenresByid(String id) async {
-    final url = Uri.parse("$detailURL$id");
-    final response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      final movie = jsonDecode(response.body);
-      final moviegenresresult = movie.genres['name'];
-
-      List<moviegenres> moviegenresInstance = moviegenresresult;
-      final List<dynamic> moviegenresList = moviegenresresult;
-
-      for (var moviegenre in moviegenresList) {
-        moviegenresInstance.add(moviegenres.fromJson(moviegenre));
-      }
-      return moviegenresInstance;
     }
     throw Error();
   }
